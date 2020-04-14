@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cliente;
-use App\Venda;
 
 class ClientesController extends Controller
 {
@@ -95,32 +94,4 @@ class ClientesController extends Controller
          return view('confirm', ['mensagem1' => $msg1 , 'mensagem2' => $msg2]);
     }
 
-    function venda(){
-        $cliente = Cliente::all();
-
-        return view('venda', ['clientes' => $cliente]);
-    }
-
-    function cadastra_venda(Request $req){
-        $id = $req->input('cliente');
-        $valor = $req->input('valor');
-        $descricao = $req->input('descricao');
-
-        $cliente = Cliente::find($id);
-
-        $venda = new Venda();
-        $venda->nome = $cliente->nome;
-        $venda->id_cliente = $id;
-        $venda->valor = $valor;
-        $venda->descricao = $descricao;
-        
-        if ($venda->save()) {
-            $msg1 = "Venda cadastrada com sucesso!";
-            $msg2 = "";
-        }else {
-            $msg1 = "Erro ao cadastrar venda!";
-            $msg2 = "";
-         }
-         return view('confirm', ['mensagem1' => $msg1 , 'mensagem2' => $msg2]);
-    }
 }

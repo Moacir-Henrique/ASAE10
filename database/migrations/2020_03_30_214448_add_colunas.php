@@ -14,8 +14,8 @@ class AddColunas extends Migration
     public function up()
     {
         Schema::table('clientes', function (Blueprint $table) {
-            $table->string('email', 80);
-            $table->string('senha', 40);
+            $table->string('email');
+            $table->string('senha');
         });
     }
 

@@ -30,5 +30,8 @@ Route::post('/cliente/update/{id}', 'ClientesController@altera_cliente')->name('
 Route::get('/cliente/delete/{id}', 'ClientesController@deletar_cliente')->name('deleta_cliente');
 
 //cadastro de venda
-Route::get('/venda', 'ClientesController@venda');
-Route::post('/venda/new', 'ClientesController@cadastra_venda')->name('cadastrar_venda');
+Route::get('/venda', 'VendasController@venda');
+Route::post('/venda/new', 'VendasController@cadastra_venda')->name('cadastrar_venda');
+
+//Realizar Login
+Route::post('/login', 'AppController@login')->name('logar');

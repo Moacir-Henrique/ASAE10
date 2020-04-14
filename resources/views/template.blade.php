@@ -26,9 +26,6 @@
 		        <a class="nav-link" href="#">Produtos</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="/cliente/cadastro">Cadastre-se</a>
-		      </li>
-		      <li class="nav-item">
 		        <a class="nav-link" href="{{ Route('lista_cliente') }}">Lista de Clientes</a>
 		      </li>
 		      <li class="nav-item">
@@ -42,14 +39,15 @@
 			    Login
 			  </button>
 			  <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
-			    <form class="px-4 py-3">
+			    <form class="px-4 py-3" method="POST" action=" {{ Route('logar') }}">
+			    	@csrf
 				    <div class="form-group">
 				      <label for="email">Endereço de e-mail</label>
-				      <input type="email" class="form-control" id="email" placeholder="email@example.com">
+				      <input type="email" class="form-control" name="email" id="email" placeholder="email@exemplo.com">
 				    </div>
 				    <div class="form-group">
 				      <label for="password1">Password</label>
-				      <input type="password" class="form-control" id="password1" placeholder="Password">
+				      <input type="password" class="form-control" name="senha" id="password1" placeholder="Senha">
 				    </div>
 
 				    <button type="submit" class="btn btn-primary">Entrar</button>
