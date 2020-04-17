@@ -14,7 +14,7 @@ class VendasController extends Controller
 
         	return view('venda', ['clientes' => $cliente]);
     	} else {
-    		return view('welcome');
+    		return view ('welcome');
     	}
 
 

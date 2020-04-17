@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'AppController@welcome')->name('welcome');
 
+//tela cadastro cliente
 Route::get('/cliente/cadastro', 'ClientesController@cadastro');
+//cadastrar no banco
 Route::post('/cliente/new', 'ClientesController@cadastrarCliente')->name('cadastrar_cliente');
+//tela lista de Clientes
 Route::get('/cliente/lista', 'ClientesController@listarCliente')->name("lista_cliente");
 
 //redireciona para tela de alteração
@@ -30,8 +31,10 @@ Route::post('/cliente/update/{id}', 'ClientesController@altera_cliente')->name('
 Route::get('/cliente/delete/{id}', 'ClientesController@deletar_cliente')->name('deleta_cliente');
 
 //cadastro de venda
-Route::get('/venda', 'VendasController@venda');
+Route::get('/venda', 'VendasController@venda')->name('venda');
 Route::post('/venda/new', 'VendasController@cadastra_venda')->name('cadastrar_venda');
 
 //Realizar Login
 Route::post('/login', 'AppController@login')->name('logar');
+//realizar logout
+Route::get('/logout', 'AppController@logout')->name('logout');

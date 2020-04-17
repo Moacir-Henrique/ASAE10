@@ -34,6 +34,10 @@
 		    </ul>
 		  </div>
 		  
+
+		  @if(session()->has('login'))
+		 	<span style="color: white; size: 12px;">{{$c->nome}} </span>  <a href=" {{ Route('logout') }}">Sair</a>
+		 @else
 			<div class="dropdown dropleft">
 			  <button class="btn btn-dark my-2 my-sm-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			    Login
@@ -57,7 +61,7 @@
 				  <a class="dropdown-item" href="#">Esqueceu sua senha?</a>
 				</div>
 			  </div>
-			
+			@endif
 		
 
 		</nav>

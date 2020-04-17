@@ -8,7 +8,14 @@ use App\Cliente;
 class ClientesController extends Controller
 {
     function cadastro(){
-    	return view('cadastro');
+    	//se estiver logado retorna tela com lista de clientes
+        if (session()->has('login')) {
+            $clientes = Cliente::all();
+
+            return view('lista', ['clientes' => $clientes]);
+        }else{
+            return view ('cadastro');
+        }
     }
 
     function cadastrarCliente(Request $req){
@@ -42,15 +49,26 @@ class ClientesController extends Controller
     }
 
     function listarCliente() {
-        $clientes = Cliente::all();
+         if (session()->has('login')) {
+            $clientes = Cliente::all();
 
-        return view('lista', ['clientes' => $clientes]);
+            return view('lista', ['clientes' => $clientes]);
+        }else{
+            return view ('welcome');
+        }
     }
 
     function tela_altera_cliente($id){
-        $cliente = Cliente::find($id);
 
-        return view('altera_cliente', ['c' => $cliente]);
+         if (session()->has('login')) {
+            $cliente = Cliente::find($id);
+
+            return view('altera_cliente', ['c' => $cliente]);
++            
+        }else{
+            return view ('welcome');
+        }
+        ;
     }
 
     function altera_cliente(Request $req, $id){
@@ -81,7 +99,8 @@ class ClientesController extends Controller
     }
 
     function deletar_cliente($id){
-        $cliente = Cliente::find($id);
+         if (session()->has('login')) {
+            $cliente = Cliente::find($id);
 
         if ($cliente->delete()) {
             $msg1 = "Usuário deletado com sucesso!";
@@ -92,6 +111,9 @@ class ClientesController extends Controller
          }
 
          return view('confirm', ['mensagem1' => $msg1 , 'mensagem2' => $msg2]);
+        }else{
+            return view ('welcome');
+        }
     }
 
 }

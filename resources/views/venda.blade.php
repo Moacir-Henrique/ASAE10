@@ -1,8 +1,7 @@
 @extends('template')
 
 @section('conteudo')
-			<h1>Realize seu cadastro</h1>
-			<h6>Para acessar área do cliente e promoções!</h6>
+			<h1>Realize sua Venda</h1>
 
 
 			<form method="POST" action="{{ Route('cadastrar_venda') }}">
