@@ -38,3 +38,8 @@ Route::post('/venda/new', 'VendasController@cadastra_venda')->name('cadastrar_ve
 Route::post('/login', 'AppController@login')->name('logar');
 //realizar logout
 Route::get('/logout', 'AppController@logout')->name('logout');
+
+//realiza chamado tela vendas
+Route::get('/venda/listar', 'VendasController@listar')->name('listar_venda');
+//Chama tela itens da venda
+Route::get('/venda/{id}/itens', 'VendasController@itensVenda')->name('venda_itens');

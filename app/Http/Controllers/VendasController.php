@@ -43,4 +43,22 @@ class VendasController extends Controller
          }
          return view('confirm', ['mensagem1' => $msg1 , 'mensagem2' => $msg2]);
     }
+
+    function listar(){
+        if (session()->has('login')) {
+            $vendas = Venda::all();
+
+            $cliente = Cliente::all();
+
+        return view('lista_vendas', ['vendas' => $vendas, 'c' => $cliente]);
+        } else {
+            return view ('welcome');
+        }
+    }
+
+    function itensVenda($id) {
+        $venda = Venda::find($id);
+
+        return view('lista_itens_venda', ['venda' => $venda]);
+    }
 }

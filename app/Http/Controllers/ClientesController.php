@@ -64,7 +64,7 @@ class ClientesController extends Controller
             $cliente = Cliente::find($id);
 
             return view('altera_cliente', ['c' => $cliente]);
-+            
+            
         }else{
             return view ('welcome');
         }

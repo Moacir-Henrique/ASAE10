@@ -29,14 +29,18 @@
 		        <a class="nav-link" href="{{ Route('lista_cliente') }}">Lista de Clientes</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="/venda">Venda</a>
+		        <a class="nav-link" href="/venda">Vender</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="{{ Route('listar_venda') }}">Vendas</a>
 		      </li>
 		    </ul>
 		  </div>
 		  
 
 		  @if(session()->has('login'))
-		 	<span style="color: white; size: 12px;">{{$c->nome}} </span>  <a href=" {{ Route('logout') }}">Sair</a>
+		 	<span style="color: white; size: 12px;">Olá,&nbsp; </span>
+		 	 <a href=" {{ Route('logout') }}">Sair</a>
 		 @else
 			<div class="dropdown dropleft">
 			  <button class="btn btn-dark my-2 my-sm-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
