@@ -16,12 +16,6 @@
 				    @endforeach
 				  </select>
 				</div>
-			  <div class="input-group mb-3">
-				  <div class="input-group-prepend">
-				    <span class="input-group-text">R$</span>
-				  </div>
-				  <input type="text" class="form-control" name="valor" placeholder="Valor">
-			  </div>
 			  <div class="form-group">
 			    <label for="descricao">Descrição</label>
 			    <textarea class="form-control" id="descricao" name="descricao" rows="4"></textarea>

@@ -43,3 +43,5 @@ Route::get('/logout', 'AppController@logout')->name('logout');
 Route::get('/venda/listar', 'VendasController@listar')->name('listar_venda');
 //Chama tela itens da venda
 Route::get('/venda/{id}/itens', 'VendasController@itensVenda')->name('venda_itens');
+//Chama tela cadastro itens da venda
+Route::get('/venda/{id}/itens/new', 'VendasController@adicionarItensVenda')->name('venda_itens_new');
