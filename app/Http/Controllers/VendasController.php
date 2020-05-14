@@ -39,7 +39,7 @@ class VendasController extends Controller
             $msg2 = "";
          }
 
-         return redirect()->route('venda_itens_new', ['id' => $venda->id]);
+         return redirect()->route('venda_itens_novo', ['id' => $venda->id]);
          //return view('confirm', ['mensagem1' => $msg1 , 'mensagem2' => $venda->id]);
 
 
@@ -72,12 +72,38 @@ class VendasController extends Controller
 
     function adicionarItem(Request $req, $id) {
         $id_produto = $req->input('id_produto');
-        $quantidada = $req->input('quantidada');
+        $quantidade = $req->input('quantidade');
 
         $produto = Produto::find($id_produto);
         $venda = Venda::find($id);
+        $subtotal = $produto->preco * $quantidade;
 
-        $subtotal = $produto->preco * $quantidada;
-        $venda->produtos()->attach();
+        $colunas_pivot = ['quantidade' => $quantidade, 'subtotal' => $subtotal];
+
+        $venda->produtos()->attach($produto->id, $colunas_pivot);
+        $venda->valor += $subtotal;
+        $venda->save();
+
+        return redirect()->route('venda_itens_novo', 
+            ['id' => $venda->id]);
+    }
+
+    function excluirItem($id, $id_produto){
+        $venda = Venda::find($id);
+        $subtotal = 0;
+
+        foreach ($venda->produtos as $vp) {
+            if ($vp->id == $id_produto) {
+                $subtotal = $vp->pivot->subtotal;
+                break;
+            }
+        }
+
+        $venda->valor = $venda->valor - $subtotal;
+        $venda->produtos()->detach($id_produto);
+        $venda->save();
+
+        return redirect()->route('venda_itens_novo', 
+            ['id' => $id]);
     }
 }

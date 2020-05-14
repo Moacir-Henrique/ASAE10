@@ -44,4 +44,7 @@ Route::get('/venda/listar', 'VendasController@listar')->name('listar_venda');
 //Chama tela itens da venda
 Route::get('/venda/{id}/itens', 'VendasController@itensVenda')->name('venda_itens');
 //Chama tela cadastro itens da venda
-Route::get('/venda/{id}/itens/new', 'VendasController@adicionarItensVenda')->name('venda_itens_new');
+Route::get('/venda/{id}/itens/new', 'VendasController@adicionarItensVenda')->name('venda_itens_novo');
+Route::post('/venda/{id}/itens/adicionar', 'VendasController@adicionarItem')->name('venda_itens_add');
+//Exclui ITEM venda
+Route::get('/venda/{id}/itens/remover/{id_produto}', 'VendasController@excluirItem')->name('vendas_item_delete');
